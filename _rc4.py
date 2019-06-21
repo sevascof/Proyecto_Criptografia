@@ -97,7 +97,7 @@ def cif(msg_in, key, out_file):
         for j in range(len(cif_xor[i])):
             cif_hex.append(str(format(cif_xor[i][j], '02x') + separador))
 
-    salida = open(out_file, 'w')
+    salida = open(out_file, 'w', encoding="ISO-8859-1")
     salida.write(''.join(cif_hex))
     salida.close()
 
@@ -136,7 +136,7 @@ def dec(msg_in, key, out_file):
             dec_txt.append(chr(dec[i][j]))
 
     pad_dec = ''.join(dec_txt)
-    salida = open(out_file, 'w')
+    salida = open(out_file, 'w', encoding="ISO-8859-1")
     salida.write(pad_dec.strip('0'))
     salida.close()
 

@@ -97,19 +97,19 @@ elif args.mth and args.ayuda:
             """)
 
 elif args.rc4 and args.Cifrado and args.Archivo and args.llave and args.salida:
-    file_in=open(args.Archivo,"r").read()
+    file_in=open(args.Archivo,"r",encoding="ISO-8859-1").readline()
     _rc4.cif(file_in, args.llave, args.salida)
 
 elif args.rc4 and args.Descifrado and args.Archivo and args.llave and args.salida:
-    file_in=open(args.Archivo,"r").read()
+    file_in=open(args.Archivo,"r",encoding="ISO-8859-1").readline()
     _rc4.dec(file_in, args.llave, args.salida)
 
 elif args.mth and args.Cifrado and args.Archivo and args.llave and args.salida:
-    file_in=open(args.Archivo,"r").read()
+    file_in=open(args.Archivo,"r",encoding="ISO-8859-1").readline()
     _mth.cif(file_in, args.llave, args.salida)
 
 elif args.mth and args.Descifrado and args.Archivo and args.llave and args.salida:
-    file_in=open(args.Archivo,"r").read()
+    file_in=open(args.Archivo,"r",encoding="ISO-8859-1").readline()
     _mth.dec(file_in, args.llave, args.salida)
 
 else:
