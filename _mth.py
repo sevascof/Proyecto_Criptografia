@@ -76,6 +76,7 @@ def cif(file_in, key):
     salida = open(file_in.strip('txt')+'cif', 'w', encoding="ISO-8859-1")
     salida.write(''.join(cif_hex))
     salida.close()
+    print("Texto cifrado almacenado en el archivo: "+file_in.strip('txt')+'cif')
 
     end = time.time()
     print("Mensaje cifrado en {} segundos".format(end - start))
@@ -108,6 +109,7 @@ def dec(file_in, key):
     salida = open(file_in.strip('cif')+'dec', 'w', encoding="ISO-8859-1")
     salida.write(pad_dec.strip('0'))
     salida.close()
+    print("Texto descifrado almacenado en el archivo: "+file_in.strip('cif')+'dec')
 
     end = time.time()
     print("Mensaje descifrado en {} segundos".format(end - start))
