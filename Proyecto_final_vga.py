@@ -12,7 +12,7 @@ parser.add_argument("-a", "--ayuda", action="store_true", help="Ayuda en pantall
 parser.add_argument("-c", "--Cifrado", action="store_true", help="Uso de algoritmo para cifrar archivo")
 parser.add_argument("-d", "--Descifrado", action="store_true", help="Uso de algoritmo para descifrar archivo")
 parser.add_argument("-k", "--llave", help="Llave con la que se ha de cifrar o descifrar el mensaje")
-parser.add_argument("-o", "--salida", help="Nombre del archivo de salida")
+# parser.add_argument("-o", "--salida", help="Nombre del archivo de salida")
 
 args = parser.parse_args()
 
@@ -22,7 +22,7 @@ if args.rc4 and args.ayuda:
             |------------------------------Algortirmo RC4 y Matrices de Hill------------------------------|
             |                                                                                             |
             | Sintaxis para algoritmo RC4.                                                                |
-            |     >>> python Proyecto_final_vga.py -rc4 <Accion> -i <Entrada> -k <Clave> -o <Salida>      |
+            |     >>> python Proyecto_final_vga.py -rc4 <Accion> -i <Entrada> -k <Clave>                  |
             |                                                                                             |
             | Accion:                                                                                     |
             |     -c: Cifrado de archivo                                                                  |
@@ -39,9 +39,9 @@ if args.rc4 and args.ayuda:
             |                                                                                             |
             | Ejemplo de uso del algoritmo RC4:                                                           |
             |                                                                                             |
-            |     Cifrar: python Proyecto_final_vga.py -rc4 -c -i baldor.txt -k P@ss0123 -o baldor.cif    |
+            |     Cifrar: python Proyecto_final_vga.py -rc4 -c -i baldor.txt -k P@ss0123                  |
             |                                                                                             |
-            |     Decifrar: python Proyecto_final_vga.py -rc4 -d -f baldor.cif -k P@ss0123 -o baldor.dec  |
+            |     Decifrar: python Proyecto_final_vga.py -rc4 -d -i baldor.cif -k P@ss0123                |
             |                                                                                             |
             | Elaborado por: Sebastian Vasco Florez sebastian.vasco@uao.edu.co                            |
             |                Marco Tulio Giron      marco.giron@uao.edu.co                                |
@@ -60,7 +60,7 @@ elif args.mth and args.ayuda:
             |------------------------------Algortirmo RC4 y Matrices de Hill------------------------------|
             |                                                                                             |
             | Sintaxis para algoritmo Matrices de Hill.                                                   |
-            |     >>> python Proyecto_final_vga.py -mth <Accion> -i <Entrada> -k <Clave> -o <Salida>      |
+            |     >>> python Proyecto_final_vga.py -mth <Accion> -i <Entrada> -k <Clave>                  |
             |                                                                                             |
             | Accion:                                                                                     |
             |     -c: Cifrado de archivo                                                                  |
@@ -81,9 +81,9 @@ elif args.mth and args.ayuda:
             |                                                                                             |
             | Ejemplo de uso del algoritmo de Matrices de Hill:                                           |
             |                                                                                             |
-            |     Cifrar: python Proyecto_final_vga.py -mth -c -i baldor.txt -k P@ss0123 -o baldor.cif    |
+            |     Cifrar: python Proyecto_final_vga.py -mth -c -i baldor.txt -k P@ss0123                  |
             |                                                                                             |
-            |     Decifrar: python Proyecto_final_vga.py -mth -d -f baldor.cif -k P@ss0123 -o baldor.dec  |
+            |     Decifrar: python Proyecto_final_vga.py -mth -d -f baldor.cif -k P@ss0123                |
             |                                                                                             |
             | Elaborado por: Sebastian Vasco Florez sebastian.vasco@uao.edu.co                            |
             |                Marco Tulio Giron      marco.giron@uao.edu.co                                |
@@ -96,21 +96,17 @@ elif args.mth and args.ayuda:
             |_____________________________________________________________________________________________|
             """)
 
-elif args.rc4 and args.Cifrado and args.Archivo and args.llave and args.salida:
-    file_in=open(args.Archivo,"r",encoding="ISO-8859-1").readline()
-    _rc4.cif(file_in, args.llave, args.salida)
+elif args.rc4 and args.Cifrado and args.Archivo and args.llave:
+    _rc4.cif(args.Archivo, args.llave)
 
-elif args.rc4 and args.Descifrado and args.Archivo and args.llave and args.salida:
-    file_in=open(args.Archivo,"r",encoding="ISO-8859-1").readline()
-    _rc4.dec(file_in, args.llave, args.salida)
+elif args.rc4 and args.Descifrado and args.Archivo and args.llave:
+    _rc4.dec(args.Archivo, args.llave)
 
-elif args.mth and args.Cifrado and args.Archivo and args.llave and args.salida:
-    file_in=open(args.Archivo,"r",encoding="ISO-8859-1").readline()
-    _mth.cif(file_in, args.llave, args.salida)
+elif args.mth and args.Cifrado and args.Archivo and args.llave:
+    _mth.cif(args.Archivo, args.llave)
 
-elif args.mth and args.Descifrado and args.Archivo and args.llave and args.salida:
-    file_in=open(args.Archivo,"r",encoding="ISO-8859-1").readline()
-    _mth.dec(file_in, args.llave, args.salida)
+elif args.mth and args.Descifrado and args.Archivo and args.llave:
+    _mth.dec(args.Archivo, args.llave)
 
 else:
 	print("Por favor ingrese:\n>>> python Proyecto_final_vga.py -h\nPara visualizar la ayuda del programa.")

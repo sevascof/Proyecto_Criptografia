@@ -81,7 +81,9 @@ def XOR(sec, key_stream, option):  # Funcion Exclusive OR
     return msg
 
 
-def cif(msg_in, key, out_file):
+def cif(file_in, key):
+
+    msg_in=open(file_in,"r", encoding="ISO-8859-1").readline()
     start = time.time()
     print("Cifrando...")
     separador = ' '
@@ -97,7 +99,7 @@ def cif(msg_in, key, out_file):
         for j in range(len(cif_xor[i])):
             cif_hex.append(str(format(cif_xor[i][j], '02x') + separador))
 
-    salida = open(out_file, 'w', encoding="ISO-8859-1")
+    salida = open(file_in.strip('txt')+'cif', 'w', encoding="ISO-8859-1")
     salida.write(''.join(cif_hex))
     salida.close()
 
@@ -107,7 +109,9 @@ def cif(msg_in, key, out_file):
     return 1
 
 
-def dec(msg_in, key, out_file):
+def dec(file_in, key):
+
+    msg_in=open(file_in,"r", encoding="ISO-8859-1").readline()
     start = time.time()
     print("Descifrando...")
     separador = ' '
@@ -136,7 +140,7 @@ def dec(msg_in, key, out_file):
             dec_txt.append(chr(dec[i][j]))
 
     pad_dec = ''.join(dec_txt)
-    salida = open(out_file, 'w', encoding="ISO-8859-1")
+    salida = open(file_in.strip('cif')+'dec', 'w', encoding="ISO-8859-1")
     salida.write(pad_dec.strip('0'))
     salida.close()
 

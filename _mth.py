@@ -47,8 +47,9 @@ def hex2dec_sep(txt, sep):
         dec.append(int(lst[j], 16))
     return dec
 
-def cif(msg_in, key, out_file):
+def cif(file_in, key):
 
+    msg_in=open(file_in,"r", encoding="ISO-8859-1").readline()
     key_mat = key_val(key)
 
     start = time.time()
@@ -72,7 +73,7 @@ def cif(msg_in, key, out_file):
     for i in range(len(tmp)):
         cif_hex.append(str(format(tmp[i], '02x')) + separador)
 
-    salida = open(out_file, 'w', encoding="ISO-8859-1")
+    salida = open(file_in.strip('txt')+'cif', 'w', encoding="ISO-8859-1")
     salida.write(''.join(cif_hex))
     salida.close()
 
@@ -81,8 +82,9 @@ def cif(msg_in, key, out_file):
 
     return 1
 
-def dec(msg_in, key, out_file):
+def dec(file_in, key):
 
+    msg_in=open(file_in,"r", encoding="ISO-8859-1").readline()
     key_mat = key_val(key)
 
     start = time.time()
@@ -103,7 +105,7 @@ def dec(msg_in, key, out_file):
             dec_txt.append(chr(plain[i][j] % 256))
 
     pad_dec = ''.join(dec_txt)
-    salida = open(out_file, 'w', encoding="ISO-8859-1")
+    salida = open(file_in.strip('cif')+'dec', 'w', encoding="ISO-8859-1")
     salida.write(pad_dec.strip('0'))
     salida.close()
 
